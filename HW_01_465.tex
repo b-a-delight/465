@@ -26,39 +26,53 @@
 \maketitle
 
 \section{}
+By following the steps of the proof of Theorem 1.1 and the proof of The Contraction Mapping Theorem, prove the following facts:
+
+\begin{enumerate}[label = (\alph*)]
+    \item the function $f(x)= \frac{1}{\sqrt{2}+0.5x}-1.5x$ has exactly one root in the interval $\left[0, \frac{1}{2}  \right]$,
+    \item the sequence of approximations $\left\{ s_k \right\}^{\infty}_{k=0}$ defined recursively by 
+    \begin{equation}\label{cases}
+    \begin{cases}
+    s_0 \in \left[0, \frac{1}{2} \right] - \text{arbitrary}\\
+    s_{k+1} = \frac{2}{3\sqrt{2}+1.5s_k}, &k=0,1,2,\dots
+    \end{cases}
+    \end{equation}converges to the root.
+\end{enumerate}
+
+
 \vspace{10mm}
 
 \section{}
-\vspace{10mm}
-
-
-\section{}
-\vspace{10mm}
-
-
-\section{}
-\vspace{10mm}
-
-\section{}
-\vspace{10mm}
-
-\section{}
-\vspace{10mm}
-
-
-\section{}
-\vspace{10mm}
-
-\section{}
+Take $s_0 = \frac{1}{\sqrt{6}}$ in (\ref{cases}) and write a code that you can use to compute the first 10000 elements of the sequence $\left\{ s_k \right\}^{\infty}_{k=0}$.
 \vspace{10mm}
 
 
 \section{}
+Determine a formula for the exact value of the root $\xi \in \left[0,\frac{1}{2} \right]$ of the function $f$.
 \vspace{10mm}
 
 
 \section{}
+Run your code and present a table that displays the iteration number $k \in {1,2,\dots,15}$ in the first column, the corresponding approximations $s_k$ in the second column, and the corresponding errors of the approximations in the third column.
 \vspace{10mm}
+
+\section{}
+Present a figure showing the approximations $s_k$ (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
+\vspace{10mm}
+
+\section{}
+Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
+\vspace{10mm}
+
+
+\section{}
+For any $s_0 \in \left[0, \frac{1}{2} \right]$, derive an upper bound on the number of iteration $k$ required to ensure that the $k^{th}$ iterate $s_k$ is correct to six decimal digits. Shows all steps of your derivation. Write down the value of the upper bound in case $s_0 = \frac{1}{\sqrt{6}}$.
+\vspace{10mm}
+
+\section{}
+Run your code with $s_0 \in \left[0,\frac{1}{\sqrt{6}} \right]$ and find the index $i$ of the first iterate $s_i$ that is correct to six decimal digits. Compare this to your answer to question 7. Is this what you have expected? Why?
+\vspace{10mm}
+
 
 
 
