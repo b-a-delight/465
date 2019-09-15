@@ -47,6 +47,47 @@ Take $s_0 = \frac{1}{\sqrt{6}}$ in (\ref{cases}) and write a code that you can u
 \vspace{10mm}
 
 
+Here is the code in python. It will return a data frame from $s_0\to s_10000$ :
+\begin{verbatim}
+    def Sk(n):
+    sequence = [0, (1/math.sqrt(6))]
+    q = 3*math.sqrt(2)
+    for index in range(n):
+        sequence.append(2/(q+1.5*sequence[-1]))
+    return sequence
+
+    df = pd.DataFrame(Sk(10000))
+    df = df.iloc[1:]
+    df = df.reset_index(drop=True)
+    df
+\end{verbatim}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|r|c|}
+        \Xhline{1 pt}
+         \textbf{k}& \textbf{$s_k$}  \\
+         \Xhline{1.5 pt}
+         0 & 0.4082482904638631\\
+         \Xhline{1 pt}
+         1 & 0.4119453334948641\\
+         \Xhline{1 pt}
+         2 & 0.41147533208484804\\
+         \Xhline{1 pt}
+         3 & 0.4115350233838435\\
+         \Xhline{1 pt}
+         $\vdots$ & $\vdots$\\
+          \Xhline{1 pt}
+         9,999 & 0.4115282959774586\\
+          \Xhline{1 pt}
+         10,000 & 0.4115282959774586\\
+         \Xhline{1 pt}
+    \end{tabular}
+    \caption{Abbreviated table for the sequence $\left\{ s_k\right\}_{k=0}^{10000}$}
+    \label{tab:10sequence}
+\end{table}
+
+
 \section{}
 Determine a formula for the exact value of the root $\xi \in \left[0,\frac{1}{2} \right]$ of the function $f$.
 \vspace{10mm}
@@ -55,6 +96,49 @@ Determine a formula for the exact value of the root $\xi \in \left[0,\frac{1}{2}
 \section{}
 Run your code and present a table that displays the iteration number $k \in {1,2,\dots,15}$ in the first column, the corresponding approximations $s_k$ in the second column, and the corresponding errors of the approximations in the third column.
 \vspace{10mm}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|r|c|c|}
+        \Xhline{1 pt}
+         \textbf{k}& \textbf{$s_k$}& \textbf{Error}  \\
+         \Xhline{1.5 pt}
+         0 & 0.4082482904638631&\\
+         \Xhline{1 pt}
+         1 & 0.4119453334948641&\\
+         \Xhline{1 pt}
+         2 & 0.41147533208484804&\\
+         \Xhline{1 pt}
+         3 & 0.4115350233838435&\\
+         \Xhline{1 pt}
+         4 & 0.41152744148658515 &\\
+         \Xhline{1 pt}
+         5 & 0.41152840451205874 & \\
+          \Xhline{1 pt}
+         6 & 0.41152828219175736 & \\
+          \Xhline{1 pt}
+         7 & 0.41152829772847227 &\\
+          \Xhline{1 pt}
+         8 & 0.41152829575505073 &\\
+          \Xhline{1 pt}
+         9 & 0.4115282960057081 &\\
+          \Xhline{1 pt}
+         10 & 0.4115282959738705 &\\
+          \Xhline{1 pt}
+         11 & 0.41152829597791435 &\\
+          \Xhline{1 pt}
+         12 & 0.41152829597740076 &\\
+          \Xhline{1 pt}
+         13 & 0.411528295977466 &\\
+          \Xhline{1 pt}
+         14 & 0.4115282959774577&\\
+          \Xhline{1 pt}
+         15 & 0.41152829597745877&\\
+         \Xhline{1 pt}
+    \end{tabular}
+    \caption{Values for the sequence$\left\{ s_k\right\}_{k=0}^{15}$}
+    \label{tab:15sequence}
+\end{table}
 
 \section{}
 Present a figure showing the approximations $s_k$ (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
