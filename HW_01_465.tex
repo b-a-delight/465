@@ -42,6 +42,32 @@ By following the steps of the proof of Theorem 1.1 and the proof of The Contract
 
 \vspace{10mm}
 
+\subsection*{(a)}
+
+\begin{align*}
+    \text{If,}&\\
+    f&:[a,b] \to \mathbb{R} \text{ is continuous}\\
+    \text{and,}&\\
+    0 &\ge f(a) \cdot f(b)\\
+    \text{then, }&\\
+    &\exists \text{ } \xi \in [a,b] \text{ where, }f(\xi)=0 \\
+    f(x)&= \frac{1}{\sqrt{2}+0.5x}-1.5x \text{ for }x \in \left[0,\frac{1}{2}\right] \\
+    \text{We will use the intermediate value theorem to prove }&\\
+    \text{that there is a 0 between $f(a)$ and $f(b)$ }&\\
+    0 &\le f(a) \cdot f(b)\\
+    f(a)&=f(1)>0\\
+    f(b)&=f(\frac{1}{2})<0 \\
+    f(x) &= \frac{1}{\sqrt{2}+0.5x}-1.5x\\
+    f(0)&= \frac{1}{\sqrt{2}+0}-0\\
+    0&< \frac{1}{\sqrt{2}}=f(a)\\
+    f\left(\frac{1}{2}\right) &= \frac{1}{\sqrt{2}+\frac{1}{2} \cdot \frac{1}{2}}-\frac{3}{2} \cdot \frac{1}{2}\\
+    &= \frac{1}{0.25 + 1.414}-\frac{3}{4}\\
+    0&> 0.60088 - .75 =f(b)\\
+\end{align*}
+
+
+
+
 \section{}
 Take $s_0 = \frac{1}{\sqrt{6}}$ in (\ref{cases}) and write a code that you can use to compute the first 10000 elements of the sequence $\left\{ s_k \right\}^{\infty}_{k=0}$.
 \vspace{10mm}
@@ -101,7 +127,7 @@ Run your code and present a table that displays the iteration number $k \in {1,2
     \centering
     \begin{tabular}{|r|c|c|}
         \Xhline{1 pt}
-         \textbf{k}& \textbf{$s_k$}& \textbf{Error}  \\
+         \centering \textbf{k}& \textbf{$s_k$}& \textbf{Error}  \\
          \Xhline{1.5 pt}
          0 & 0.4082482904638631&\\
          \Xhline{1 pt}
@@ -148,6 +174,12 @@ Present a figure showing the approximations $s_k$ (vertical axis) versus the ite
 Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
 \vspace{10mm}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .7\linewidth]{hw01q05.png}
+    \caption{Figure}
+    \label{fig:my_label}
+\end{figure}
 
 \section{}
 For any $s_0 \in \left[0, \frac{1}{2} \right]$, derive an upper bound on the number of iteration $k$ required to ensure that the $k^{th}$ iterate $s_k$ is correct to six decimal digits. Shows all steps of your derivation. Write down the value of the upper bound in case $s_0 = \frac{1}{\sqrt{6}}$.
