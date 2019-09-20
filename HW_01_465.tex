@@ -44,9 +44,13 @@ By following the steps of the proof of Theorem 1.1 and the proof of The Contract
 
 \subsection*{(a)}
 
+
+
 \begin{align*}
-    \text{If,}&\\
-    f&:[a,b] \to \mathbb{R} \text{ is continuous}\\
+    \text{To show that $f(x)$ has exactly 1 root, we first have to}&\\
+    \text{show that a root exists to begin with. So, if}&\\
+    f&:[a,b] \to \mathbb{R} \text{ is continuous and}\\
+    [a,b] &= \left[0,\frac{1}{2}\right]\\
     \text{and,}&\\
     0 &\ge f(a) \cdot f(b)\\
     \text{then, }&\\
@@ -56,15 +60,48 @@ By following the steps of the proof of Theorem 1.1 and the proof of The Contract
     \text{that there is a 0 between $f(a)$ and $f(b)$ }&\\
     0 &\le f(a) \cdot f(b)\\
     f(a)&=f(1)>0\\
-    f(b)&=f(\frac{1}{2})<0 \\
+    f(b)&=f\left(\frac{1}{2}\right)<0 \\
     f(x) &= \frac{1}{\sqrt{2}+0.5x}-1.5x\\
     f(0)&= \frac{1}{\sqrt{2}+0}-0\\
     0&< \frac{1}{\sqrt{2}}=f(a)\\
     f\left(\frac{1}{2}\right) &= \frac{1}{\sqrt{2}+\frac{1}{2} \cdot \frac{1}{2}}-\frac{3}{2} \cdot \frac{1}{2}\\
     &= \frac{1}{0.25 + 1.414}-\frac{3}{4}\\
     0&> 0.60088 - .75 =f(b)\\
+    \text{Therefore, a root exists in the interval $[a,b]$.}&\\
+    \text{In order to show uniqueness we will say that since}&\\
+    \text{$f(x)$ has a root, then there exists a}&\\
+    g&:g(x)=0\\
+    \Rightarrow f(x)&= g(x)-x=0\\
+    \text{So,}&\\
+    g(x)&= \frac{2}{3\sqrt{2}+1.5x}\\
+    |x-y|&= |g(x)-g(y)|\\
+    \text{From the Mean Value Theorem we get,}&\\
+    |x-y|&\le |g(x)-g(y)|=|g'(z)(x-y)| \text{, while }z \in [x,y]\\
+    g'(x) &= \frac{-3}{(3\sqrt{2}+1.5x)^2}\\
+    \text{As $g(x)$ is a monotone decreasing function within the}&\\
+    \text{bounds of $\left[0, \frac{1}{2}\right]$ we can find the upper bound.}&\\
+    g'(0)&= \frac{1}{6}\\
+    \Rightarrow |x-y|&= |g(x)-g(y)| \le \frac{x-y}{6}\\
+    \text{Therefore $g$ is a contraction.}&\\
+    \text{To show that the root is unique we will use a proof}&\\
+    \text{by contradiction.}&\\
+    \text{We make the assumption that there exists}&\\
+    \text{two fixed points $\eta$ and $\xi$. So,}&\\
+    |\xi - \eta|&= |g(\xi)-g(\eta)|\le \bigg | \frac{\xi - \eta}{6}\bigg |\\
+    \Rightarrow |\xi - \eta|& \le \bigg | \frac{\xi - \eta}{6}\bigg |\\
+    \Rightarrow \frac{| \xi - \eta|}{\xi - \eta|}& \le \frac{1}{6}\\
+    \text{Which means, }&, \le \frac{1}{6}\\
+    \text{Which is wrong. Thus, it is a contradiction meaning}&\\
+    \text{that there exists only one fixed point for $g$.}
 \end{align*}
 
+\vspace{10mm}
+\subsection*{(b)}
+
+\begin{align*}
+     s_{k+1} &= \frac{2}{3\sqrt{2}+1.5s_k} \text{, }k=0,1,2,\dots\\
+     s_0 &\in \left[0, \frac{1}{2} \right]\\
+\end{align*}
 
 
 
@@ -176,7 +213,7 @@ Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertica
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = .7\linewidth]{hw01q05.png}
+    \includegraphics[width = .7\linewidth]{images/hw01q05.png}
     \caption{Figure}
     \label{fig:my_label}
 \end{figure}
