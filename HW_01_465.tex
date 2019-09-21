@@ -254,6 +254,7 @@ Run your code and present a table that displays the iteration number $k \in {1,2
     \label{tab:15sequence}
 \end{table}
 
+
 \section{}
 Present a figure showing the approximations $s_k$ (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
 \vspace{10mm}
@@ -262,7 +263,7 @@ Present a figure showing the approximations $s_k$ (vertical axis) versus the ite
     \centering
     \includegraphics[width = .7\linewidth]{images/hw01q05.png}
     \caption{Figure}
-    \label{fig:my_label}
+    \label{fig:sk}
 \end{figure}
 
 
@@ -274,7 +275,7 @@ Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertica
     \centering
     \includegraphics[width = .7\linewidth]{images/hw01q06.png}
     \caption{Graph showing Error at $k$}
-    \label{fig:my_label}
+    \label{fig:error}
 \end{figure}
 
 
@@ -314,7 +315,23 @@ For any $s_0 \in \left[0, \frac{1}{2} \right]$, derive an upper bound on the num
     \varepsilon &\ge \frac{L^k}{1-L}|x_0-x_1|\\
     \frac{L^{k+1}}{1-L}|x_0-x_1|&\le \frac{L^k}{1-L}|x_0-x_1| \le \varepsilon\\
     \log(\varepsilon) &\ge \log\left(\frac{L^k}{1-L}|x_0-x_1|  \right)\\
-    \log(\varepsilon) &\ge \log(L^k)-\log \left(\frac{|x_0-x_1|}{}  \right)\\
+    \log(\varepsilon) &\ge \log(L^k)+\log \left(\frac{|x_0-x_1|}{1-L}  \right)\\
+    k &\ge \frac{\log(\varepsilon)-\frac{|x_0-x_1|}{1-L}}{\log(L)}=\frac{\log{\left(\frac{|x_0-x_1|}{1-L}\right)-\log(\varepsilon)}}{\log{\frac{1}{L}}}\\
+    &= \frac{\log{(|x_0-x_1|)}-\log{(1-L)}-\log{(\varepsilon)}}{\log{\frac{1}{L}}}\\
+    &=\frac{\log{(x_0-x_1)}-\log{(\varepsilon(1-L))}}{\log{\frac{1}{L}}}\\
+    &= \alpha\\
+    k_0(\varepsilon)&\le \left[\frac{\log{(x_0-x_1)}-\log{(\varepsilon(1-L))}}{\log{\frac{1}{L}}} \right]+1\\
+\end{align*}
+
+\begin{align*}
+    \varepsilon&=10^{-6}&l&=\frac{1}{6} &x_0 &= \frac{1}{\sqrt{6}}&x_1&= \frac{2}{3\sqrt{2}+1.5(\frac{1}{\sqrt{6}})}=0.41194533349\\
+\end{align*}
+
+\begin{align*}
+    k_0(10^{-6})&\le \left[ \frac{\log{(\frac{1}{\sqrt{6}}-0.4119453)}-\log{(10^{-6}(1-\frac{1}{6}))}}{\log{\frac{1}{\frac{1}{6}}}} \right]+1\\
+     k_0(10^{-6})&\le \left[ \frac{\log{(|-0.003697|)}-\log{(0.0000008\overline{3})}}{\log{(6)}} \right]+1\\
+      k_0(10^{-6})&\le [4.68681]+1= 4+1 = 5\\
+      \text{It is accurate to 6 decimal digits is when $k=5$.}
 \end{align*}
 
 
@@ -322,7 +339,7 @@ For any $s_0 \in \left[0, \frac{1}{2} \right]$, derive an upper bound on the num
 Run your code with $s_0 \in \left[0,\frac{1}{\sqrt{6}} \right]$ and find the index $i$ of the first iterate $s_i$ that is correct to six decimal digits. Compare this to your answer to question 7. Is this what you have expected? Why?
 \vspace{10mm}
 
-5 where the graph flattens out and answer from
+Yes, because when $k=5$ you see in Figure \ref{fig:error}, $k=5$ is where the graph flattens out. It is also the answer from question 7.
 
 \section*{Appendix}
 
