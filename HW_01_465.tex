@@ -162,41 +162,41 @@ Run your code and present a table that displays the iteration number $k \in {1,2
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|r|c|c|}
+    \begin{tabular}{|r|l|c|}
         \Xhline{1 pt}
          \centering \textbf{k}& \textbf{$s_k$}& \textbf{Error}  \\
          \Xhline{1.5 pt}
-         0 & 0.4082482904638631&\\
+         0 & 0.4082482904638631&$3.280006\cdot e^{-03}$\\
          \Xhline{1 pt}
-         1 & 0.4119453334948641&\\
+         1 & 0.4119453334948641&$4.170375\cdot e^{-04}$\\
          \Xhline{1 pt}
-         2 & 0.41147533208484804&\\
+         2 & 0.41147533208484804&$5.296389\cdot e^{-05}$\\
          \Xhline{1 pt}
-         3 & 0.4115350233838435&\\
+         3 & 0.4115350233838435&$6.727406\cdot e^{-06}$\\
          \Xhline{1 pt}
-         4 & 0.41152744148658515 &\\
+         4 & 0.41152744148658515 &$8.544909\cdot e^{-07}$\\
          \Xhline{1 pt}
-         5 & 0.41152840451205874 & \\
+         5 & 0.41152840451205874 & $1.085346\cdot e^{-07}$\\
           \Xhline{1 pt}
-         6 & 0.41152828219175736 & \\
+         6 & 0.41152828219175736 & $1.378570\cdot e^{-08}$\\
           \Xhline{1 pt}
-         7 & 0.41152829772847227 &\\
+         7 & 0.41152829772847227 &$2.224078\cdot e^{-09}$\\
           \Xhline{1 pt}
-         8 & 0.41152829575505073 &\\
+         8 & 0.41152829575505073 &$2.824962\cdot e^{-10}$\\
           \Xhline{1 pt}
-         9 & 0.4115282960057081 &\\
+         9 & 0.4115282960057081 &$3.588019\cdot e^{-11}$\\
           \Xhline{1 pt}
-         10 & 0.4115282959738705 &\\
+         10 & 0.4115282959738705 &$3.588019\cdot e^{-12}$\\
           \Xhline{1 pt}
-         11 & 0.41152829597791435 &\\
+         11 & 0.41152829597791435 &$4.558576\cdot e^{-13}$\\
           \Xhline{1 pt}
-         12 & 0.41152829597740076 &\\
+         12 & 0.41152829597740076 &$5.773160\cdot e^{-14}$\\
           \Xhline{1 pt}
-         13 & 0.411528295977466 &\\
+         13 & 0.411528295977466 &$7.494005\cdot e^{-15}$\\
           \Xhline{1 pt}
-         14 & 0.4115282959774577&\\
+         14 & 0.4115282959774577&$7.771561\cdot e^{-16}$\\
           \Xhline{1 pt}
-         15 & 0.41152829597745877&\\
+         15 & 0.41152829597745877&$2.775558\cdot e^{-16}$\\
          \Xhline{1 pt}
     \end{tabular}
     \caption{Values for the sequence$\left\{ s_k\right\}_{k=0}^{15}$}
@@ -207,16 +207,19 @@ Run your code and present a table that displays the iteration number $k \in {1,2
 Present a figure showing the approximations $s_k$ (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
 \vspace{10mm}
 
-\section{}
-Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
-\vspace{10mm}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width = .7\linewidth]{images/hw01q05.png}
     \caption{Figure}
     \label{fig:my_label}
 \end{figure}
+
+
+\section{}
+Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
+\vspace{10mm}
+
+
 
 \section{}
 For any $s_0 \in \left[0, \frac{1}{2} \right]$, derive an upper bound on the number of iteration $k$ required to ensure that the $k^{th}$ iterate $s_k$ is correct to six decimal digits. Shows all steps of your derivation. Write down the value of the upper bound in case $s_0 = \frac{1}{\sqrt{6}}$.
