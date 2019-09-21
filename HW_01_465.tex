@@ -103,6 +103,12 @@ By following the steps of the proof of Theorem 1.1 and the proof of The Contract
      s_0 &\in \left[0, \frac{1}{2} \right]\\
 \end{align*}
 
+\begin{align*}
+    \text{First, we need to verify that $a$ and $b$}&\\
+    \text{ have different signs.}&\\
+     f(x) &= \frac{2}{3\sqrt{2}+1.5x}\\
+     f(0) &= \frac{2}{3\sqrt{2}+1.5(0)}
+\end{align*}
 
 
 \section{}
@@ -155,6 +161,11 @@ Here is the code in python. It will return a data frame from $s_0\to s_10000$ :
 Determine a formula for the exact value of the root $\xi \in \left[0,\frac{1}{2} \right]$ of the function $f$.
 \vspace{10mm}
 
+\begin{align*}
+    f(x) &= \frac{1}{\sqrt{2}+0.5x}-1.5x\\
+\end{align*}
+
+set to 0 and use quadratic
 
 \section{}
 Run your code and present a table that displays the iteration number $k \in {1,2,\dots,15}$ in the first column, the corresponding approximations $s_k$ in the second column, and the corresponding errors of the approximations in the third column.
@@ -219,6 +230,12 @@ Present a figure showing the approximations $s_k$ (vertical axis) versus the ite
 Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
 \vspace{10mm}
 
+\begin{figure}
+    \centering
+    \includegraphics{images/hw01q06.png}
+    \caption{Graph showing Error at $k$}
+    \label{fig:my_label}
+\end{figure}
 
 
 \section{}
@@ -231,6 +248,54 @@ Run your code with $s_0 \in \left[0,\frac{1}{\sqrt{6}} \right]$ and find the ind
 
 
 
+\section*{Appendix}
+
+\begin{verbatim}
+    def Sk(n):
+    sequence = [0, (1/math.sqrt(6))]
+    q = 3*math.sqrt(2)
+    for index in range(n):
+        sequence.append(2/(q+1.5*sequence[-1]))
+    return sequence
+    
+    df = pd.DataFrame(Sk(10000))
+    df = df.iloc[1:]
+    df = df.reset_index(drop=True)
+    
+    df = pd.DataFrame(Sk(15))
+    df = df.iloc[1:]
+    df = df.reset_index(drop=True)
+    df = df.reset_index()
+    df = df.rename(columns = {0: 'Sk'})
+    df['Error'] = df.apply(lambda row : abs(row['Sk']-((-1.5*math.sqrt(2)+
+        math.sqrt(7.5))/1.5)), axis = 1) 
+    df.to_pickle('sk15.pkl')
+    df
+    
+    
+    import matplotlib.pyplot as plt
+
+    df = pd.read_pickle('sk15.pkl')
+
+    plt.plot(df['index'],df['Sk'])
+    plt.ylabel('Series Sk at k')
+    plt.xlabel('k')
+    plt.title('Series Sk')
+    plt.savefig('hw01q05.png')
+    plt.show()
+    
+    
+    import matplotlib.pyplot as plt
+
+    df = pd.read_pickle('sk15.pkl')
+
+    plt.plot(df['index'],df['Error'])
+    plt.ylabel('Error for Sk at k')
+    plt.xlabel('k')
+    plt.title('Error')
+    plt.savefig('hw01q06.png')
+    plt.show()
+\end{verbatim}
 
 
 \end{document}
