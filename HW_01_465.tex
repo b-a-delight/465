@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{makecell}
+\usepackage{mathtools}
 \usepackage[margin=0.5in]{geometry}
 \usepackage{multicol}
 \usepackage{subcaption}
@@ -97,18 +98,60 @@ By following the steps of the proof of Theorem 1.1 and the proof of The Contract
 
 \vspace{10mm}
 \subsection*{(b)}
+% page 14
 
 \begin{align*}
-     s_{k+1} &= \frac{2}{3\sqrt{2}+1.5s_k} \text{, }k=0,1,2,\dots\\
-     s_0 &\in \left[0, \frac{1}{2} \right]\\
+     x_0 &\in \left[0, \frac{1}{2} \right]\\
+     \lim_{k \to \infty} x_k&= \xi\\
+     \lim_{k \to \infty} |x_k - \xi|&= 0\\
+     x_{k+1} &= \frac{2}{3\sqrt{2}+1.5\cdot x_k} \\
+     g(x_k) &= \frac{\frac{2}{3}}{\sqrt{2}+1.5\cdot x_k}\\
+     0 &\le \left(\frac{1}{6} \right)^0 |x_k-\xi|= |g(x_{k-1})-g(\xi)|\\
+     & \le \left(\frac{1}{6} \right)^1|x_{k-1}-\xi|= \left(\frac{1}{6} \right)|g(x_{k-2})-g(\xi)| \\
+     &\le \left(\frac{1}{6} \right)^2 |x_{k-2}-\xi|\\
+     \text{Conjecture:}\\
+     P(k) &= |x_k-\xi| \le \left(\frac{1}{6} \right)^k|x_0-\xi| \text{, for }k=0,1,2,\dots\\
+     \text{Verify that these conditions are true:}&\\
+     1.)&P(k_0)\\
+     2.)&P(k) \Rightarrow P(k+1)\text{, for all }k \le k_0\\
+     \text{then, $P(k)$for all }k \le k_0\\
+     \text{In our example }k_0=0 \text{ that is,}\\
+     \text{this condition 1.) is written in the form,}\\
+     &|x_0-\xi| \le \left(\frac{1}{6} \right)^k|x_0-\xi|\\
+     \text{To prove condition 2.), we assume that,}&\\
+     |x_{k}-\xi|&\le \left(\frac{1}{6} \right)^{k}|x_0-\xi|\\
+     \text{in order to prove,}\\
+     |x_{k+1}-\xi|&\le \left(\frac{1}{6} \right)^{k+1}|x_0-\xi|\\
+     \text{So we get,}&\\
+     |x_{k}-\xi|&=|g(x_k)-g(\xi)| < \left(\frac{1}{6} \right)|x_k-\xi|\\
+     & \le \frac{1}{6}\cdot \left(\frac{1}{6} \right)^k|x_0-\xi|= \left(\frac{1}{6} \right)^{k+1}|x_0-\xi|\\
+     \text{By mathematical induction the conjecture}&\\
+     P(k) &= |x_k-\xi| \le \left(\frac{1}{6} \right)^k|x_0-\xi| \text{, for }k=0,1,2,\dots\\
+     \text{is proved for all $k \ge 0$, }k=0,1,2,\dots &\\
+     \text{Since}&\\
+     0 & \le |x_k-\xi| \le \left(\frac{1}{6} \right)^{k+1}|x_0-\xi| \text{, for all }k \ge 0\\
+     \text{By the squeeze theorem,}&\\
+     0&= \lim_{k \to \infty} |x_k - \xi|\\
+     \text{because,}\\
+     0& =\lim_{k \to \infty} \left(\frac{1}{3} \right)^k\\
+     \text{and}&\\
+     0& =\lim_{k \to \infty}0\\
+     \text{that is,}\\
+     \xi &= \lim_{k \to \infty}x_k\\
 \end{align*}
 
-\begin{align*}
-    \text{First, we need to verify that $a$ and $b$}&\\
-    \text{ have different signs.}&\\
-     f(x) &= \frac{2}{3\sqrt{2}+1.5x}\\
-     f(0) &= \frac{2}{3\sqrt{2}+1.5(0)}
-\end{align*}
+% \begin{align*}
+%     \text{First, we need to verify that $a$ and $b$}&\\
+%     \text{ have different signs.}&\\
+%     f_{k+1} &= \frac{2}{3\sqrt{2}+1.5s_k}=g(x_k)\\
+%     g(x) &= x \\
+%     x &= \frac{2}{3\sqrt{2}+1.5x}\\
+%     0 &= \frac{2}{3\sqrt{2}+1.5x}-x\\
+%     f(0) &= \frac{2}{3\sqrt{2}+1.5(0)}-0\\
+%     &= \frac{2}{3\sqrt{2}} \approx \frac{1}{4}\\
+%     f\left(\frac{1}{2}\right) &= \frac{2}{3\sqrt{2}+1.5(\frac{1}{2})}-\frac{1}{2}\\
+%     &\approx \frac{1}{4}-\frac{1}{2}=-\frac{1}{4}\\
+% \end{align*}
 
 
 \section{}
@@ -116,20 +159,7 @@ Take $s_0 = \frac{1}{\sqrt{6}}$ in (\ref{cases}) and write a code that you can u
 \vspace{10mm}
 
 
-Here is the code in python. It will return a data frame from $s_0\to s_10000$ :
-\begin{verbatim}
-    def Sk(n):
-    sequence = [0, (1/math.sqrt(6))]
-    q = 3*math.sqrt(2)
-    for index in range(n):
-        sequence.append(2/(q+1.5*sequence[-1]))
-    return sequence
 
-    df = pd.DataFrame(Sk(10000))
-    df = df.iloc[1:]
-    df = df.reset_index(drop=True)
-    df
-\end{verbatim}
 
 \begin{table}[H]
     \centering
@@ -163,9 +193,19 @@ Determine a formula for the exact value of the root $\xi \in \left[0,\frac{1}{2}
 
 \begin{align*}
     f(x) &= \frac{1}{\sqrt{2}+0.5x}-1.5x\\
+    0 & = \frac{1}{\sqrt{2}+0.5x}-1.5x\\
+    1.5x &= \frac{1}{\sqrt{2}+0.5x}\\
+    1 &= 1.5x(\sqrt{2}+0.5x^2)\\
+    1 &= 1.5x\cdot \sqrt{2}+ .75x^2\\
+    0 &=  .75x^2+ 1.5x\cdot \sqrt{2}-1\\
+    \text{Now use the quadratic equation}&\\
+    &\frac{-1.5\sqrt{2} \pm \sqrt{(1.5\sqrt{2})^2}-4\cdot.75\cdot -1}{1.5}\\
+    \text{Which results in the answer,}&\\
+    &\frac{-1.5\sqrt{2}\pm \sqrt{7.5}}{1.5}\\
+    0.4115 &\approx \frac{-1.5\sqrt{2}+ \sqrt{7.5}}{1.5}\\
+    -3.24 &\approx \frac{-1.5\sqrt{2}- \sqrt{7.5}}{1.5}\\
+    \xi &= 0.4115\\
 \end{align*}
-
-set to 0 and use quadratic
 
 \section{}
 Run your code and present a table that displays the iteration number $k \in {1,2,\dots,15}$ in the first column, the corresponding approximations $s_k$ in the second column, and the corresponding errors of the approximations in the third column.
@@ -230,9 +270,9 @@ Present a figure showing the approximations $s_k$ (vertical axis) versus the ite
 Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertical axis) versus the iteration index $k$ (horizontal axis) for $k=1,2,\dots,15$.
 \vspace{10mm}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics{images/hw01q06.png}
+    \includegraphics[width = .7\linewidth]{images/hw01q06.png}
     \caption{Graph showing Error at $k$}
     \label{fig:my_label}
 \end{figure}
@@ -242,11 +282,47 @@ Present a figure showing the errors $|s_k - \xi|$ of the approximations (vertica
 For any $s_0 \in \left[0, \frac{1}{2} \right]$, derive an upper bound on the number of iteration $k$ required to ensure that the $k^{th}$ iterate $s_k$ is correct to six decimal digits. Shows all steps of your derivation. Write down the value of the upper bound in case $s_0 = \frac{1}{\sqrt{6}}$.
 \vspace{10mm}
 
+\begin{align*}
+    \text{If we assume that:}
+    g&:[a,b] \to [a,b] \text{ is continuous}\\
+    g&: \text{ is a contraction}\\
+    x_0&=\in [a,b]\\
+    x_{k+1}&= g(x_k) \text{ for }k=0,1,2, \dots \\
+    \text{then,}&\\ 
+    \forall& \varepsilon>0 \text{ }\exists k_0(\varepsilon)\in \mathbb{Z}_+ \text{ } \forall k \ge k_0(\varepsilon) |k_k-\xi|\ge \varepsilon\\
+    \text{and,}&\\
+    k_0(\varepsilon)& \le \left[ \frac{\ln{|x_1-x_0|}-\ln{(\varepsilon(1-L))}} {\ln{\frac{1}{L}}}\right]\\
+    \text{where $[x]$ is the floor operation}&\\
+    \text{we have}&\\
+    |x_k-\xi|& \le L^k|x_0-\xi|\\
+    0&=\lim_{k \to \infty}L^k \text{ as }L \in (0,1)\\
+    0&=\lim_{k \to \infty}L^k|x_o-\xi|\\
+    \forall& \varepsilon>0 \text{, }\exists N \text{, }\forall k \ge N \text{ where }L^k|x_0|\le \varepsilon\text{, and }L^N|x_0|\le \varepsilon\\
+    \text{Now we replace $|x_0-\xi|$ with $|x_0-x_1|$ to eliminate $\xi$}\\
+    |x_0-\xi| = |x_0-x_1+x_1-\xi| \le |x_0-x_1|&+|x_1-\xi| \le |x_0-x_1| + L|x_0-\xi|\\
+    \text{So, }&\\
+    |x_0-\xi| \le |x_0-x_1| +L|x_0-\xi| \Longleftrightarrow{} |x_0-\xi|-L|x_0-\xi|& \le|x_0-x_1|(1-L|x_0-\xi|\le |x_0-1|)
+    \Rightarrow |x_0-\xi| \le \frac{1}{1-L}|x_0-x_1|\\
+    \text{So from  $|x_k-\xi| \le L^k|x_0-\xi|$ ,}&\\
+    |x_k-\xi| &\le L^k|x_0-\xi|\le L^k \frac{1}{1-L}|x_0-x_1|\\
+    \text{So,}&\\
+    |x_k-\xi|& \le \frac{L}{1-L}|x_0-x_1|\\
+    \text{Since, $L^k \xrightarrow[k \to \infty]0$,}\\
+    0 &=\lim_{k \to \infty}\frac{L}{1-L}|x_0-x_1|\\
+    \Longleftrightarrow \forall& \varepsilon>0 \text{ }\exists N\text{ } \forall k \ge N \text{ }|x_k-\xi|\ge \varepsilon\\
+    \text{So we define $k_0(\varepsilon)=N$}&\\
+    \varepsilon &\ge \frac{L^k}{1-L}|x_0-x_1|\\
+    \frac{L^{k+1}}{1-L}|x_0-x_1|&\le \frac{L^k}{1-L}|x_0-x_1| \le \varepsilon\\
+    \log(\varepsilon) &\ge \log\left(\frac{L^k}{1-L}|x_0-x_1|  \right)\\
+    \log(\varepsilon) &\ge \log(L^k)-\log \left(\frac{|x_0-x_1|}{}  \right)\\
+\end{align*}
+
+
 \section{}
 Run your code with $s_0 \in \left[0,\frac{1}{\sqrt{6}} \right]$ and find the index $i$ of the first iterate $s_i$ that is correct to six decimal digits. Compare this to your answer to question 7. Is this what you have expected? Why?
 \vspace{10mm}
 
-
+5 where the graph flattens out and answer from
 
 \section*{Appendix}
 
