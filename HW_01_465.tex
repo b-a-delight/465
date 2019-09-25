@@ -101,11 +101,21 @@ By following the steps of the proof of Theorem 1.1 and the proof of The Contract
 % page 14
 
 \begin{align*}
-     x_0 &\in \left[0, \frac{1}{2} \right]\\
-     \lim_{k \to \infty} x_k&= \xi\\
+    \text{To show that equation \ref{cases} is a sequence that}&\\
+    \text{converges to the root first we prove that,}&\\
+     \lim_{k \to \infty} x_k&= \xi, \qquad x_0 \in \left[0, \frac{1}{2} \right]\\ \\
      \lim_{k \to \infty} |x_k - \xi|&= 0\\
-     x_{k+1} &= \frac{2}{3\sqrt{2}+1.5\cdot x_k} \\
-     g(x_k) &= \frac{\frac{2}{3}}{\sqrt{2}+1.5\cdot x_k}\\
+     \text{Conjecture:}\\
+     P(k) &= |x_k-\xi| \le \left(\frac{1}{6} \right)^k|x_0-\xi| \text{, for }k=0,1,2,\dots\\
+     P(0) &= |x_0-\xi| \le \left(\frac{1}{6} \right)^0|x_0-\xi| \\
+     \text{So,}&\\
+     &|x_0- \xi| \le |x_0 - \xi|\\
+     \text{and $P(0)$ is satisfied $P(K) \Rightarrow P(k+1)$}&\\
+     \text{for all $k$. In other words}&\\
+     &|x_k- \xi|\le \left(\frac{1}{6} \right)^k |x_{k-2}-\xi|\\
+     \Rightarrow &|x_{k+1}- \xi| \le  \left(\frac{1}{6} \right)^{k+1} |x_{0}-\xi|\\
+     &x_{k+1} = \frac{2}{3\sqrt{2}+1.5\cdot x_k} \\
+     &g(x_k) = \frac{\frac{2}{3}}{\sqrt{2}+1.5\cdot x_k}\\
      0 &\le \left(\frac{1}{6} \right)^0 |x_k-\xi|= |g(x_{k-1})-g(\xi)|\\
      & \le \left(\frac{1}{6} \right)^1|x_{k-1}-\xi|= \left(\frac{1}{6} \right)|g(x_{k-2})-g(\xi)| \\
      &\le \left(\frac{1}{6} \right)^2 |x_{k-2}-\xi|\\
