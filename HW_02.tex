@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsfonts}
+\usepackage{arydshln}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{makecell}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\allowdisplaybreaks
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Bridgette Delight}
+\fancyhead[C]{\large \textbf{Math 465 - Homework 02}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+
+\title{{\large Math 465}\\ Homework 0X}
+\author{Bridgette Delight}
+\date{\today}
+
+\begin{document}
+
+%\maketitle
+
+\section{}
+Consider the functions
+\begin{equation}\label{eq:1a}
+    f(x) = 3\pi - x - 0.01 \sin(x), \qquad \text{for }x \in \mathbb{R}
+\end{equation}
+
+\begin{equation}\label{eq:1b}
+    g_1(x) = 3\pi - 0.01 \sin(x), \qquad \text{for }x \in \mathbb{R}
+\end{equation}
+
+\begin{equation}\label{eq:1c}
+    g_2(x) =  x - \frac{f(x)}{f'(x)}, \qquad \text{for }x \in \mathbb{R} \text{ such that }f'(x) \ne 0,
+\end{equation}
+
+and show that the following statements are equivalent
+$$f(\xi) = 0 \Longleftrightarrow g_1(\xi)=\xi g_2(\xi) = \xi.$$
+
+\vspace{10mm}
+
+\section{}
+Show that $\xi = 3\pi$ is a root of $f$ and determine $g_2'(\xi)$.
+\vspace{10mm}
+
+
+\section{}
+Determine $L_1 \in (0,1)$such that $\underset{x \in \mathbb{R}}{max}|g_1'(x)|\le L_1$
+\vspace{10mm}
+
+
+\section{}
+Show that $3\pi$ is a unique root of the function $f:\mathbb{R} \xrightarrow{} \mathbb{R}$ defined by equation \ref{eq:1a}.
+\vspace{10mm}
+
+\section{}
+Write a code that you can use to compute the first $k_{max}+1$ approximations $x_k$ and $y_k$ to $3\pi$ from the following two algorithms
+
+\begin{equation}\label{eq:4a}
+    \begin{cases}
+    x_0 = 100,\\
+    x_{k+1}= g_1(x_k), & k=0,1,\dots , k_{max}-1\\
+    \end{cases}
+\end{equation}
+
+and 
+
+\begin{equation}\label{eq:4b}
+    \begin{cases}
+    y_0 = 100,\\
+    y_{k+1}= g_2(y_k), & k=0,1,\dots , k_{max}-1\\
+    \end{cases}
+\end{equation}
+
+where $k_{max}$ is an arbitrary positive integer and $g_1$ and $g_2$ are defined by equations \ref{eq:1b} and \ref{eq:1c}, respectively. 
+
+\vspace{10mm}
+
+\section{}
+Run your code for $k_{max}=10$ and present a table (Table 1) displaying the iteration number $k \in \{1,2,\dots,10\}$ in the first column, the corresponding approximations $x_k$ defined by equation \ref{eq:4a} in the second column, $y_k$ defined by \ref{eq:4b} in the third column, the corresponding errors of $x_k$ in the fourth column, and the errors of $y_k$ in the fifth column. Use {\fontfamily{qcr}\selectfont \textbf{format long e}}.
+\vspace{10mm}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \Xhline{1 pt}
+    \textbf{k} & $x_k$& $y_k$& \makecell{errors\\$x_k $ }  & \makecell{errors \\$y_k$}  \\
+    \Xhline{2 pt}
+    \textbf{1} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{2} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{3} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{4} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{5} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{6} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{7} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{8} && &   &  \\
+    \Xhline{1 pt}
+    \textbf{9} && &   &  \\
+     \Xhline{1 pt}
+    \textbf{10} && &   &  \\
+    \Xhline{1 pt}
+    \end{tabular}
+    \caption{Question 6}
+    \label{tab:my_label}
+\end{table}
+
+
+\section{}
+Run your code for $k_{max}=2$ and compute approximations $z_k$ defined by
+
+\begin{equation}\label{eq:7}
+    \begin{cases}
+    z_0 = x_2,\\
+    z_{k+1}=g_2(z_k), & k=0,1,\dots , k_{max}-1,
+    \end{cases}
+\end{equation}
+
+to present a table (Table 2) displaying the iteration number $k \ in \{0,1,2\}$ in the first column,the corresponding approximations $z_k$ defined by \ref{eq:7} in the second  column, and the corresponding errors of $z_k$ in the third column. Use {\fontfamily{qcr}\selectfont \textbf{format long e}}.
+\vspace{10mm}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \Xhline{1pt}
+    \textbf{k} &$z_k$    & \makecell{errors \\ $z_k$}  \\
+    \Xhline{2 pt}
+    \textbf{0}   & & \\
+    \Xhline{1 pt}
+    \textbf{1}   & & \\
+    \Xhline{1 pt}
+    \textbf{2}   & & \\
+    \Xhline{1 pt}
+    \end{tabular}
+    \caption{Question 7}
+    \label{tab:q7}
+\end{table}
+
+
+
+\end{document}

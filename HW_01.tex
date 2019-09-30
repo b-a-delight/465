@@ -10,13 +10,21 @@
 \usepackage{listings}
 \usepackage{makecell}
 \usepackage{mathtools}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.75in]{geometry}
 \usepackage{multicol}
 \usepackage{subcaption}
 \usepackage{wrapfig}
 \allowdisplaybreaks
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Bridgette Delight}
+\fancyhead[C]{Math 465 - Homework 01}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{2pt}
 
 \title{{\large Math 465}\\ Homework 01}
 \author{Bridgette Delight}
@@ -90,8 +98,8 @@ By following the steps of the proof of Theorem 1.1 and the proof of The Contract
     \text{two fixed points $\eta$ and $\xi$. So,}&\\
     |\xi - \eta|&= |g(\xi)-g(\eta)|\le \bigg | \frac{\xi - \eta}{6}\bigg |\\
     \Rightarrow |\xi - \eta|& \le \bigg | \frac{\xi - \eta}{6}\bigg |\\
-    \Rightarrow \frac{| \xi - \eta|}{\xi - \eta|}& \le \frac{1}{6}\\
-    \text{Which means, }&, \le \frac{1}{6}\\
+    \Rightarrow \frac{| \xi - \eta|}{|\xi - \eta|}& \le \frac{1}{6}\\
+    \text{Which means, }&\quad 1 \le \frac{1}{6}\\
     \text{Which is wrong. Thus, it is a contradiction meaning}&\\
     \text{that there exists only one fixed point for $g$.}
 \end{align*}
@@ -312,8 +320,8 @@ For any $s_0 \in \left[0, \frac{1}{2} \right]$, derive an upper bound on the num
     \text{Now we replace $|x_0-\xi|$ with $|x_0-x_1|$ to eliminate $\xi$}\\
     |x_0-\xi| = |x_0-x_1+x_1-\xi| \le |x_0-x_1|&+|x_1-\xi| \le |x_0-x_1| + L|x_0-\xi|\\
     \text{So, }&\\
-    |x_0-\xi| \le |x_0-x_1| +L|x_0-\xi| \Longleftrightarrow{} |x_0-\xi|-L|x_0-\xi|& \le|x_0-x_1|(1-L|x_0-\xi|\le |x_0-1|)
-    \Rightarrow |x_0-\xi| \le \frac{1}{1-L}|x_0-x_1|\\
+    |x_0-\xi| \le |x_0-x_1| +L|x_0-\xi| &\Longleftrightarrow{} |x_0-\xi|-L|x_0-\xi| \le|x_0-x_1|(1-L|x_0-\xi|\le |x_0-1|)\\
+    &\Rightarrow |x_0-\xi| \le \frac{1}{1-L}|x_0-x_1|\\
     \text{So from  $|x_k-\xi| \le L^k|x_0-\xi|$ ,}&\\
     |x_k-\xi| &\le L^k|x_0-\xi|\le L^k \frac{1}{1-L}|x_0-x_1|\\
     \text{So,}&\\
