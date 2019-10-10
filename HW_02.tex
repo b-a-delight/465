@@ -3,6 +3,7 @@
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{amsfonts}
 \usepackage{arydshln}
+\usepackage{datetime}
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{graphicx}
@@ -17,11 +18,14 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
+\mmddyydate
+
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{Bridgette Delight}
-\fancyhead[C]{\large \textbf{Math 465 - Homework 02}}
+\fancyhead[C]{\large \textbf{Math 465 - Homework 02 - \today}}
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{2pt}
 
@@ -52,19 +56,90 @@ $$f(\xi) = 0 \Longleftrightarrow g_1(\xi)=\xi g_2(\xi) = \xi.$$
 
 \vspace{10mm}
 
+\begin{align*}
+    \text{First prove that:}&\\
+    f(\xi) =0 & \Longleftrightarrow g_1(\xi)=\xi\\
+    f(\xi) =0 &\quad 0 = 3\pi - \xi - 0.01\sin(\xi)\\
+    g_1(\xi)=\xi & \quad \xi = 3\pi - 0.01\sin(\xi)\\
+    0 &= 3\pi - \xi - 0.01\sin(\xi)\\
+    \text{Therefore,}&\\
+    f(\xi) =0 & \Longleftrightarrow g_1(\xi)=\xi\\
+    \text{Now prove that,}&\\
+     g_1(\xi)&= g_2(\xi) = \xi\\
+     g_1(\xi)=\xi & \quad \xi = 3\pi - 0.01\sin(\xi)\\
+     0 &= 3\pi - \xi - 0.01\sin(\xi)\\
+     g_2(\xi)=\xi & \quad \xi= \xi - \frac{f(\xi)}{f'(\xi)}\\
+     \xi &= \xi - \frac{3\pi - \xi - 0.01\sin(\xi)}{-1-0.01\cos(\xi)}\\
+     0 &= - \frac{3\pi - \xi - 0.01\sin(\xi)}{-1-0.01\cos(\xi)}\\
+     \text{Since you cannot divide by zero, that means the}&\\
+     \text{numerator is equal to zero, and since the }&\\
+     \text{numerator is equal to $g_1(\xi)=\xi$, then,}\\
+     &g_1(\xi) = g_2(\xi) = \xi \\
+    \text{Therefore,}&\\
+    &f(\xi) = 0 \Longleftrightarrow g_1(\xi)=\xi g_2(\xi) = \xi
+\end{align*}
+
+
+
 \section{}
 Show that $\xi = 3\pi$ is a root of $f$ and determine $g_2'(\xi)$.
 \vspace{10mm}
+
+\begin{align*}
+    f(x) &= 3\pi - x - 0.01 \sin(x)\\
+    f(3\pi) &= 3\pi - 3\pi - 0.01 \sin(3\pi)\\
+    &= 0 - 0.01 \sin(3\pi)\\
+    &=- 0-0 = 0\\
+    \text{Therefore, $3\pi$ is a root of $f$.}&\\
+    g_2(\xi) &= \xi - \frac{3\pi - \xi - 0.01\sin(\xi)}{-1-0.01\cos(\xi)}\\
+    g_2'(\xi)&= 1 - \frac{(-1-0.01\cos(\xi)(-1-0.01\cos(\xi))-(3\pi - \xi - 0.01\sin(\xi))(0.01\sin(\xi))} {(-1-0.01\cos(\xi))^2}\\
+    &= 1-\frac{(-1-0.01\cos(\xi))^2- (0.03\pi\sin(\xi)-0.01\xi\sin(\xi)- (0.01\sin(\xi))^2 )}{(-1-0.01\cos(\xi))^2}\\
+    &=1- \frac{(-1-0.01\cos(\xi))^2- \sin(\xi)(0.03\pi-0.01\xi - (0.01\sin(\xi)) )}{(-1-0.01\cos(\xi))^2}\\
+    g_2'(3\pi)&= 1- \frac{(-1-0.01\cos(3\pi))^2- \sin(3\pi)(0.03\pi-0.01\pi - (0.01\sin(\pi)) )}{(-1-0.01\cos(\pi))^2}\\
+    &= 1- \frac{(-1-0.01(1))^2- 0(0.03\pi-0.01\pi - (0.01\cdot 0) )}{(-1-0.01(1))^2}\\
+    &= 1- \frac{(-1-0.01(1))^2}{(-1-0.01(1))^2}= 1 - 1\\
+    &= 0\\
+\end{align*}
 
 
 \section{}
 Determine $L_1 \in (0,1)$such that $\underset{x \in \mathbb{R}}{max}|g_1'(x)|\le L_1$
 \vspace{10mm}
 
+\begin{align*}
+    g_1'(x) &= -0.01\cos(x)\\
+    |g_1'(x)| &= 0.01\cos(x)\\
+    \underset{x \in \mathbb{R}}{max}|g_1'(x)| &= 0.01 \cdot 1 = 0.01\\
+    L_1 &\ge 0.01\\
+    \text{So,}&\\
+    L_1 &= 0.01 \in (0,1)\\
+\end{align*}
 
 \section{}
 Show that $3\pi$ is a unique root of the function $f:\mathbb{R} \xrightarrow{} \mathbb{R}$ defined by equation \ref{eq:1a}.
 \vspace{10mm}
+
+Theorem 1.3, the Contraction Mapping Theorem,\\
+Assume:
+\begin{enumerate}
+      \item $g: [a,b] \to [a,b]$ is continuous
+    \item $g$ is a contraction \\
+    Then $g$ has a unique fixed point $\xi \in [a,b]$.
+\end{enumerate}
+
+Since $f: \mathbb{R}\to \mathbb{R}$ and $3\pi-x-0.01 \sin(x)$ is continuous then Assumption 1. is met.\par
+For Assumption 2. the contraction condition can be replaced by a stronger condition.
+
+\begin{align*}
+    g_1-\xi  &= |g(x)-g_1(y)| \le L|x-y|\\
+    L &\ge \frac{|g(x)-g_1(y)|}{|x-y|}\\
+    L &\ge \bigg |\frac{g(x)-g_1(y)}{x-y} \bigg| \\
+    L &\ge |g_1'(x)|\\
+    L &\ge max|g_1'(x)|\\
+    \text{from Problem 3 we know that,}&\\
+    L &\ge 0.01\\
+\end{align*}
+So, Assumption 2. has been met. As all assumptions have been met then $g$ has a unique fixed point. Since $g_1(\xi)=\xi$ is unique and $g(\xi)t > f(\xi)=0$ then, $f(\xi)=0$ is unique. So, $f$ has a unique root $3\pi$.
 
 \section{}
 Write a code that you can use to compute the first $k_{max}+1$ approximations $x_k$ and $y_k$ to $3\pi$ from the following two algorithms
@@ -99,31 +174,42 @@ Run your code for $k_{max}=10$ and present a table (Table 1) displaying the iter
     \Xhline{1 pt}
     \textbf{k} & $x_k$& $y_k$& \makecell{errors\\$x_k $ }  & \makecell{errors \\$y_k$}  \\
     \Xhline{2 pt}
-    \textbf{1} && &   &  \\
+    \textbf{1} &	9.429842&	10.204168&9.057522203923062e+01 &9.057522203923062e+01\\
     \Xhline{1 pt}
-    \textbf{2} && &   &  \\
+    \textbf{2} &9.424829&	9.426273&5.063656e-03&\\
     \Xhline{1 pt}
-    \textbf{3} && &   &  \\
+    \textbf{3} &9.424778&	9.424778&&  \\
     \Xhline{1 pt}
-    \textbf{4} && &   &  \\
+    \textbf{4} &9.424778&	9.424778&&  \\
     \Xhline{1 pt}
-    \textbf{5} && &   &  \\
+    \textbf{5} &9.424778&	9.424778&& \\
     \Xhline{1 pt}
-    \textbf{6} && &   &  \\
+    \textbf{6} &9.424778&	9.424778&&  \\
     \Xhline{1 pt}
-    \textbf{7} && &   &  \\
+    \textbf{7} &9.424778&	9.424778&&  \\
     \Xhline{1 pt}
-    \textbf{8} && &   &  \\
+    \textbf{8} &9.424778&	9.424778&& \\
     \Xhline{1 pt}
-    \textbf{9} && &   &  \\
+    \textbf{9} &9.424778&	9.424778&&  \\
      \Xhline{1 pt}
-    \textbf{10} && &   &  \\
+    \textbf{10} &9.424778&	9.424778&&  \\
     \Xhline{1 pt}
     \end{tabular}
     \caption{Question 6}
     \label{tab:my_label}
 \end{table}
 
+0     9.057522e+01
+1     5.063656e-03
+2     5.063635e-05
+3     5.063635e-07
+4     5.063635e-09
+5     5.063683e-11
+6     5.062617e-13
+7     5.329071e-15
+8     0.000000e+00
+9     0.000000e+00
+10    0.000000e+00
 
 \section{}
 Run your code for $k_{max}=2$ and compute approximations $z_k$ defined by
@@ -144,11 +230,11 @@ to present a table (Table 2) displaying the iteration number $k \ in \{0,1,2\}$ 
     \Xhline{1pt}
     \textbf{k} &$z_k$    & \makecell{errors \\ $z_k$}  \\
     \Xhline{2 pt}
-    \textbf{0}   & & \\
+    \textbf{0}   &9.424829 & \\
     \Xhline{1 pt}
-    \textbf{1}   & & \\
+    \textbf{1}   & 9.424778& \\
     \Xhline{1 pt}
-    \textbf{2}   & & \\
+    \textbf{2}   & 9.424778 & \\
     \Xhline{1 pt}
     \end{tabular}
     \caption{Question 7}
