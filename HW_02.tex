@@ -26,7 +26,7 @@
 \fancyhf{}
 \fancyhead[L]{Bridgette Delight}
 \fancyhead[C]{\large \textbf{Math 465 - Homework 02 - \today}}
-\fancyhead[R]{\thepage}
+\fancyhead[R]{pg. \thepage}
 \renewcommand{\headrulewidth}{2pt}
 
 \title{{\large Math 465}\\ Homework 0X}
@@ -164,6 +164,56 @@ where $k_{max}$ is an arbitrary positive integer and $g_1$ and $g_2$ are defined
 
 \vspace{10mm}
 
+\begin{verbatim}
+import numpy as np
+import pandas as pd
+import math
+
+def g1(n):
+    sequence = [0, 100]
+    for index in range(n):
+        sequence.append(3*math.pi-0.01*math.sin(sequence[-1]))
+    return sequence
+    
+def g2(n):
+    sequence = [0, 100]
+    for index in range(n):
+        sequence.append(sequence[-1]-(3*math.pi-sequence[-1]-.01*math.sin(sequence[-1]))/(-1-.01*math.cos(sequence[-1])))
+    return sequence
+    
+df = pd.DataFrame(g1(10))
+
+df = df.rename(columns = {0: 'x'})
+df['y'] = g2(10)
+
+df = df.iloc[1:]
+df = df.reset_index(drop=True)
+
+df['x-Error'] = df.apply(lambda row : abs(row['x']-(3*math.pi)), axis = 1)
+df['y-Error'] = df.apply(lambda row : abs(row['y']-(3*math.pi)), axis = 1)
+
+df   
+
+def z(n,df):
+    sequence = [0, df.loc[2,'x']]
+    for index in range(n):
+       sequence.append(sequence[-1]-(3*math.pi-sequence[-1]-.01*math.sin(sequence[-1]))/(-1-.01*math.cos(sequence[-1])))
+    return sequence
+
+dfz = pd.DataFrame(z(2,df))
+
+dfz = dfz.rename(columns = {0: 'z'})
+
+
+dfz = dfz.iloc[1:]
+dfz = dfz.reset_index(drop=True)
+
+dfz['z-Error'] = dfz.apply(lambda row : abs(row['z']-(3*math.pi)), axis = 1)
+
+dfz
+\end{verbatim}
+
+
 \section{}
 Run your code for $k_{max}=10$ and present a table (Table 1) displaying the iteration number $k \in \{1,2,\dots,10\}$ in the first column, the corresponding approximations $x_k$ defined by equation \ref{eq:4a} in the second column, $y_k$ defined by \ref{eq:4b} in the third column, the corresponding errors of $x_k$ in the fourth column, and the errors of $y_k$ in the fifth column. Use {\fontfamily{qcr}\selectfont \textbf{format long e}}.
 \vspace{10mm}
@@ -174,42 +224,31 @@ Run your code for $k_{max}=10$ and present a table (Table 1) displaying the iter
     \Xhline{1 pt}
     \textbf{k} & $x_k$& $y_k$& \makecell{errors\\$x_k $ }  & \makecell{errors \\$y_k$}  \\
     \Xhline{2 pt}
-    \textbf{1} &	9.429842&	10.204168&9.057522203923062e+01 &9.057522203923062e+01\\
+    \textbf{1} &9.429841617180477&10.20416802284721 &5.063656411097739e-03& 7.793900620778338e-01 \\
     \Xhline{1 pt}
-    \textbf{2} &9.424829&	9.426273&5.063656e-03&\\
+    \textbf{2} &9.424828597117099&	9.426272920120425& 5.063634771929060e-05 & 1.494959351045821e-03\\
     \Xhline{1 pt}
-    \textbf{3} &9.424778&	9.424778&&  \\
+    \textbf{3} &9.424778467132857&9.424777960780629&5.063634773705417e-07& 1.124966786392179e-11  \\
     \Xhline{1 pt}
-    \textbf{4} &9.424778&	9.424778&&  \\
+    \textbf{4} &9.424777965833014&	9.424777960769379& 5.063634844759690e-09 & 0.000000000000000e+00 \\
     \Xhline{1 pt}
-    \textbf{5} &9.424778&	9.424778&& \\
+    \textbf{5} &9.424777960820016&	9.424777960769379 &5.063682806394354e-11 & 0.000000000000000e+00 \\
     \Xhline{1 pt}
-    \textbf{6} &9.424778&	9.424778&&  \\
+    \textbf{6} &9.424777960769886&	9.424777960769379& 5.062616992290714e-13  & 0.000000000000000e+00 \\
     \Xhline{1 pt}
-    \textbf{7} &9.424778&	9.424778&&  \\
+    \textbf{7} &9.424777960769385&9.424777960769379&5.329070518200751e-15& 0.000000000000000e+00 \\
     \Xhline{1 pt}
-    \textbf{8} &9.424778&	9.424778&& \\
+    \textbf{8} &9.424777960769379&	9.424777960769379& 0.000000000000000e+00 & 0.000000000000000e+00 \\
     \Xhline{1 pt}
-    \textbf{9} &9.424778&	9.424778&&  \\
+    \textbf{9} &9.424777960769379&	9.424777960769379& 0.000000000000000e+00&  0.000000000000000e+00\\
      \Xhline{1 pt}
-    \textbf{10} &9.424778&	9.424778&&  \\
+    \textbf{10} &9.424777960769379&	9.424777960769379& 0.000000000000000e+00&  0.000000000000000e+00\\
     \Xhline{1 pt}
     \end{tabular}
     \caption{Question 6}
     \label{tab:my_label}
 \end{table}
-
-0     9.057522e+01
-1     5.063656e-03
-2     5.063635e-05
-3     5.063635e-07
-4     5.063635e-09
-5     5.063683e-11
-6     5.062617e-13
-7     5.329071e-15
-8     0.000000e+00
-9     0.000000e+00
-10    0.000000e+00
+ 	
 
 \section{}
 Run your code for $k_{max}=2$ and compute approximations $z_k$ defined by
@@ -230,11 +269,11 @@ to present a table (Table 2) displaying the iteration number $k \ in \{0,1,2\}$ 
     \Xhline{1pt}
     \textbf{k} &$z_k$    & \makecell{errors \\ $z_k$}  \\
     \Xhline{2 pt}
-    \textbf{0}   &9.424829 & \\
+    \textbf{0}   &9.424828597117099 & 5.063634771929060e-05\\
     \Xhline{1 pt}
-    \textbf{1}   & 9.424778& \\
+    \textbf{1}   & 9.424777960769379& 0.000000000000000e+00\\
     \Xhline{1 pt}
-    \textbf{2}   & 9.424778 & \\
+    \textbf{2}   & 9.424777960769379 & 0.000000000000000e+00\\
     \Xhline{1 pt}
     \end{tabular}
     \caption{Question 7}
