@@ -77,8 +77,8 @@ where $g(x) = x-\textbf{K}(x)f(x)$.
     with $[J_{rj}]_{r,j=0}^n = J_f(x)$, $\delta_{ij} = 0$ if $i \ne j$ and $\delta_{ij}=1$ if $i=j$.
     \item Use the result of part (a) to show that all elements of $J_g(\xi)$ are identically zero.
 \end{enumerate}
-\subsection*{2}
-\subsubsection*{(a)}
+
+\subsection*{(2a)}
 
 \begin{align*}
     g(x) &= x- K(x)f(x)\\
@@ -98,9 +98,38 @@ where $g(x) = x-\textbf{K}(x)f(x)$.
     f_n(x)\\[1ex]
     \end{bmatrix}\\
     %%%% end matrix
-    g_i(x) &= x_i - ( + \dots + )\\
+    g_i(x) &= x_i - \bigg( k_{i1}(x)f_1(x)+k_{i2}(x)f_2(x) + k_{i3}(x)f_3(x) + \dots + k_{in}(x)f_n(x)\bigg)\\
+    \frac{\partial g_i}{\partial x_j} &= \frac{\partial x_i}{\partial x_j} - \frac{\partial}{\partial x_j}\bigg( k_{i1}(x)f_1(x)+k_{i2}(x)f_2(x) + k_{i3}(x)f_3(x) + \dots + k_{in}(x)f_n(x)\bigg)\\
+    &= \frac{\partial x_i}{\partial x_j} - \sum_{r=1}^n \frac{\partial x_{ir}}{\partial x_j}(x) f_r (x) - \sum_{r=1}^n k_{ir}^n J_{rj}(x)\\ 
+    [J_{rj}]_{r,j=1}^n &= J_f(x) \\
+    \text{when $i=j$}&\\
+    & \frac{\partial x_i}{\partial x_j} =  \frac{\partial x_i}{\partial x_i} = 1 \\
+     \text{when $i\ne j$}&\\
+     &\frac{\partial x_i}{\partial x_j}  = 0 \\
+     \text{So,}&\\
+     J_g(x) &= [\gamma_{ij}]_{i,j=1}^n\\
+     \gamma_{ij} &= \delta_{ij} - \sum_{r=1}^n \frac{\partial K_{ir}}{\partial x_j}f_r - \sum_{r=1}^n k_{ir}J_{rj}\\
+     \text{when }\delta_{ij}&= 1 \quad \text{when }i=j \quad \text{and }\delta_{ij}= 1  \text{when } i \ne j \\
 \end{align*}
 
+\subsection*{(2b)}
+
+\begin{align*}
+    f(\xi) &= \Vec{0}\\
+    \delta_{ij} & = 
+    \begin{bmatrix}
+    1 & 0 &0 & \dots &0 \\[1ex]
+    0 & 1 &0 & \dots &0 \\[1ex]
+    \vdots & \vdots &\vdots &\vdots & 0 \\[1ex]
+    0 & 0 &0 &0 & 1 \\[1ex]
+    \end{bmatrix} = I \\
+    \Vec{0} &= \sum_{r=1}^n \frac{\partial k_{ir}(\xi)}{\partial x_j} f_r(\xi) \\
+    k_{ir}(\xi) &= J_{ij}^{-1}(\xi)\\
+    I &= \sum_{r=1}^n J_{ij}^{-1}(\xi) \cdot J_{rj}(\xi) \\
+    \text{Thus,}&\\
+    \Vec{0} &= I - \Vec{0} - I \\
+    J_g (\xi) &= \Vec{0}\\
+\end{align*}
 
 \section{}
 Let $f:\mathbb{R}^2 \to \mathbb{R}^2$ be defined by $f(x_1,x_2)= (x_1^2 + x_2^2-2, \quad x_1 - x_2)$.
@@ -128,13 +157,11 @@ Let $f:\mathbb{R}^2 \to \mathbb{R}^2$ be defined by $f(x_1,x_2)= (x_1^2 + x_2^2-
     \item Run the algorithm (\ref{q3b}) with $x_1^0 = 2$, $x_2^0=3$ and present a figure showing $x_1^k$ and $x_2^k$ (vertical axis) versus $k=0,1,2,\dots ,10$ (horizontal axis).
 \end{enumerate}
 
-\subsection*{3}
-\subsubsection*{(a)}
+
+\subsection*{(3a)}
 
 \begin{align*}
-    x_1 - x_2 &= 0 \\
-    \text{and,}&\\
-    x_1^2 + x_2^2 - 2 &=0\\
+    x_1 - x_2 = 0 \quad &\text{and, }x_1^2 + x_2^2 - 2 =0\\
     \text{So,}&\\
     x_1 &= x_2 \\
     \text{Substitute $x_1 = x_2 $}&\\
@@ -145,7 +172,7 @@ Let $f:\mathbb{R}^2 \to \mathbb{R}^2$ be defined by $f(x_1,x_2)= (x_1^2 + x_2^2-
     \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} &= \begin{bmatrix} 1 \\ 1 \end{bmatrix} \text{ or } \begin{bmatrix} -1 \\ -1 \end{bmatrix}\\
 \end{align*}
 
-\subsubsection*{(b)}
+\subsection*{(3b)}
 
 \begin{align*}
     \begin{bmatrix} x_1^1 \\[1ex] x_2^1\end{bmatrix} &= \begin{bmatrix} x_1^0 \\[1ex] x_2^0\end{bmatrix} - \begin{bmatrix} 2x_1^0 & 2x_2^0 \\[1ex] 1 & -1\end{bmatrix} \cdot \begin{bmatrix} (x_1^0)^2+(x_2^0)^2 -2 \\[1ex] x_1^0 - x_2^0 \end{bmatrix} \\
@@ -162,15 +189,24 @@ Let $f:\mathbb{R}^2 \to \mathbb{R}^2$ be defined by $f(x_1,x_2)= (x_1^2 + x_2^2-
     x_1^1 &= x_2^2 =  \frac{(x_1^0)^2 + (x_2^0)^2 +2}{2(x_1^0 + x_2^0)}\\
 \end{align*}
 
-\subsubsection*{(b)}
+\subsection*{(3c)}
 
 \begin{align*}
-    x_1^{(k+1)}&=x_2^{(k+1)}=\frac{(x_1^k)^2 + (x_2^k)^2 +2}{2(x_1^k + x_2^k)}\\
+    0 &< x_1^0 + x_2^0 \\
+    x_1^1 &= x_2^1 > 0 \\
+    x_1^k = x_2^k >0\\
+    x^{k+1} &> x^k \\
+    x^{k+1} &= \frac{}{}
 \end{align*}
 
+\subsection*{(3d)}
 
-
-
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
 
 
 \end{document}
