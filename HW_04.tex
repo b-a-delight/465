@@ -55,7 +55,8 @@ Suppose that the vector function $g=(g_1, \dots, g_n)$ is a contraction in the $
     &0 < L < n^{-\frac{1}{p}}<n^{\frac{1}{p}}\\
     &n^{\frac{1}{p}} \cdot L < 1\\
     0 &< n^{\frac{1}{p}\cdot L}<1\\
-    \norm{g(x) - g(y)}_{\infty} & \le n^{\frac{1}{p}} \cdot L \norm{x - y}_{\infty}= w \norm{ x - y }_{\infty} \\
+    \norm{g(x) - g(y)}_{\infty} & \le n^{\frac{1}{p}} \cdot L \norm{x - y}_{\infty}\\
+    &= w \norm{ x - y }_{\infty} \\
     \text{So, $\norm{g}_{\infty}$ is a contraction}&\\
 \end{align*}
 
@@ -194,17 +195,41 @@ Let $f:\mathbb{R}^2 \to \mathbb{R}^2$ be defined by $f(x_1,x_2)= (x_1^2 + x_2^2-
 \begin{align*}
     0 &< x_1^0 + x_2^0 \\
     x_1^1 &= x_2^1 > 0 \\
-    x_1^k = x_2^k >0\\
+    x_1^k &= x_2^k >0\\
     x^{k+1} &> x^k \\
-    x^{k+1} &= \frac{}{}
+    x^{k+1} &= \frac{(x_1^k)^2 + (x_2^k)^2 + 2}{2(x_1^k + x_2^k)}\\
+    x_1^k & \le \frac{(x_1^k)^2 + (x_2^k)^2 + 2}{2(x_1^k + x_2^k)}\\
+    x^k & \le \frac{(x_1^k)^2 + (x_2^k)^2 + 2}{2(x_1^k + x_2^k)}\\
+    \text{We will say $x_1^k = x_2^k = x^k$ for easier reading}&\\
+    x^k & \le \frac{(x^k)^2 +1}{2x^k}\\
+    2(x^k)^2 & \le (x^k)^2 +1  \\
+    2(x^k)^2 & \le 1 \\
+    \text{So, $0 <x^k \le 1$ is monotonically increasing.}&\\
+    0 & > x_1^0 + x_2^0 \\
+    x_1^0 &= x_2^0 < 0 \\
+    x_1^k &= x_2^k \\
+    x_1^k & \ge \frac{(x_1^k)^2 + (x_2^k)^2 + 2}{2(x_1^k + x_2^k)}\\
+    \text{We will say $x_1^k = x_2^k = x^k$ for easier reading}&\\
+    x^k & \ge  \frac{(x^k)^2 +1}{2x^k}\\
+    (x^k)^2 & \le 1 \\
+    \text{So, $-1 \le x^k < 0$ is monotonically decreasing.}&\\
+    \text{Since,}&\\
+    x^{k+1} & \ge x^k\\
+    \lim_{k \to \infty} x^k &= \lim_{k \to \infty} 1\\
+    &= 1\\
+     \text{Since,}&\\
+    x^{k+1} & \le x^k\\
+    \lim_{k \to \infty} x^k &= \lim_{k \to \infty} -1\\
+    &= -1\\
+    \text{Thus, it is bounded.}
 \end{align*}
 
 \subsection*{(3d)}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics{}
-    \caption{Caption}
+    \includegraphics[width = .75\linewidth]{images/hw04q3d.PNG}
+    \caption{$k^{th}$ iteration}
     \label{fig:my_label}
 \end{figure}
 
