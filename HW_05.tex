@@ -43,7 +43,36 @@
     \item  Find an upper bound for the interpolation error on $[0, 1]$.
 \end{enumerate}
 \vspace{10mm}
+%https://www.chegg.com/homework-help/questions-and-answers/construct-lagrange-interpolation-polynomial-p3-p3-function-f-x-sin-cosc-interval-0-1-inter-q42522942
 
+\subsection*{(a)}
+
+\begin{align*}
+    x_0 = 0 \quad& f(x_0) = 1\\
+    x_1 = 0.25 \quad& f(x_1) = 1.21631638\\
+    x_2 = 0.5 \quad& f(x_2) = 1.3570081\\
+    x_3 = 1 \quad& f(x_3) = 1.381773291\\
+    f(x) &=  \frac{(x-0.25)(x-0.5)(x-1)}{(-0.25)(-0.75)(-1)}(1)
+        +  \frac{(x-0)(x-0.5)(x-1)}{(0.25)(-0.75)(-1)}(1.21631638)+\\
+        &  \frac{(x-0)(x-0.25)(x-1)}{(0.25)(0.75)(-1)}(1.35700081)
+        +  \frac{(x-0)(x-0.25)(x-0.5)}{(0.25)(0.75)(1)}(1.381773291)\\
+    f(x) &= 1 + 1.0066x - 0.545509 x^2 -0.0793181 x^3
+\end{align*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = .9 \linewidth]{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+\subsection*{(b)}
+
+\begin{align*}
+    |F| &\le \frac{(0.5)^4}{4(4)}|F^4(x)| \le \frac{0.5^4}{16}\sqrt{2} = \sqrt{2}\\
+    \text{Therefore, the upper bound is $\sqrt{2}$}\\
+    f^4(x) &= \sin(x) + \cos(x) \le 1.414\\
+\end{align*}
 
 
 \section{}
